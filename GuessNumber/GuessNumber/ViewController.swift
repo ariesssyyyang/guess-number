@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     private let textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "請輸入你的答案"
+        textField.placeholder = "Please enter your answer..."
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.8
         textField.layer.cornerRadius = 8
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
     private let sendButton: UIButton = {
         let button = UIButton()
-        button.setTitle("送出", for: .normal)
+        button.setTitle("Send", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         return button
     }()
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         }
 
         let restartButton = UIButton()
-        restartButton.setTitle("重啟一局", for: .normal)
+        restartButton.setTitle("Restart", for: .normal)
         restartButton.setTitleColor(.black, for: .normal)
         restartButton.backgroundColor = .orange
         restartButton.layer.cornerRadius = 4.0
@@ -126,7 +126,7 @@ class ViewController: UIViewController {
             let inputNumber = Int(inputText),
             isValidInput(inputText)
         else {
-            return logs.append("parameter 錯誤: 輸入參數不符合規範")
+            return logs.append("⚠️ WARNING: Parameter error, input is invalid")
         }
 
         let first = Input(index: 0, value: inputNumber / 1000)
@@ -149,11 +149,13 @@ class ViewController: UIViewController {
             }
         }
 
+        let resultWord: String
         if counterA == 4 {
-            logs.append("答對：第 \(roundCounter) 次輸入 \(inputText)，驗證結果為 4A 0B 找到答案")
+            resultWord = "🎉 CORRECT"
         } else {
-            logs.append("尚未答對：第 \(roundCounter) 次輸入 \(inputText)，驗證結果為 \(counterA)A \(counterB)B")
+            resultWord = "❌ WRONG"
         }
+        logs.append("\(resultWord): \(roundCounter) time(s) enter \(inputText). Result: \(counterA)A \(counterB)B")
     }
 
     @objc
