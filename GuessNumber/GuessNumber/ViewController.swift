@@ -84,7 +84,7 @@ class ViewController: UIViewController {
 
         view.addSubview(vStackView)
         vStackView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)//.inset(20)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
         let restartButton = UIButton()
